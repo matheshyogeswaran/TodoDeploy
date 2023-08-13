@@ -12,7 +12,7 @@ const App = () => {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get('https://tododeploy.onrender.com/api/todos');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}`);
       setTodos(response.data);
     } catch (error) {
       console.error(error);
@@ -21,7 +21,7 @@ const App = () => {
 
   const addTodo = async () => {
     try {
-      const response = await axios.post('https://tododeploy.onrender.com/api/todos', { title: newTodo });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}`, { title: newTodo });
       setTodos([...todos, response.data]);
       setNewTodo('');
     } catch (error) {
